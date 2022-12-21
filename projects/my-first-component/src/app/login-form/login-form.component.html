@@ -1,3 +1,4 @@
+
 <div id="login-form">
     <form>
       <h1>{{title}}</h1>  
@@ -6,11 +7,52 @@
       <hr />
   
       <label for="email"><b>Email</b></label>
-      <input type="text" placeholder="Enter your email" id="email" name="email" required/>
-  
+      <input [(ngModel)]="email" type="text" placeholder="Enter your email" id="email" name="email" required/>
+     
       <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter your password" id="psw" name="psw" required/>
+      <input [(ngModel)]="password" type="password" placeholder="Enter your password" id="psw" name="psw" required/>
   
-      <p><button type="submit">Login</button></p>
+      <p><button [(ngModel)]="loggedIn" (click)="setLoggedIn()" type="submit">Login</button></p>
+   
     </form>
+</div>
+  
+
+  <div *ngIf="loggedIn">
+  <ul class="films">
+    <li class="film card">
+      <img
+        class="poster"
+        src="https://m.media-amazon.com/images/M/MV5BMDdmZGU3NDQtY2E5My00ZTliLWIzOTUtMTY4ZGI1YjdiNjk3XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_SX300.jpg"
+      />
+      <p class="title">
+        Titanic
+        <span class="rating">★★★★</span>
+      </p>
+      <dl>
+        <dt>Release date</dt>
+        <dd>07/01/1998</dd>
+        <dt>Director</dt>
+        <dd>James Cameron</dd>
+        <dt>Actors</dt>
+        <dd>Leonardo DiCaprio, Kate Winslet, Billy Zane, Kathy Bates</dd>
+      </dl>
+      <p class="plot">
+        84 years later, a 100 year-old woman named Rose DeWitt Bukater tells the
+        story to her granddaughter Lizzy Calvert, Brock Lovett, Lewis Bodine,
+        Bobby Buell and Anatoly Mikailavich on the Keldysh about her life set in
+        April 10th 1912, on a ship called Titanic when young Rose boards the
+        departing ship with the upper-class passengers and her mother, Ruth DeWitt
+        Bukater, and her fiancé, Caledon Hockley. Meanwhile, a drifter and artist
+        named Jack Dawson and his best friend Fabrizio De Rossi win third-class
+        tickets to the ship in a game. And she explains the whole story from
+        departure until the death of Titanic on its first and last voyage April
+        15th, 1912 at 2:20 in the morning.
+      </p>
+    </li>
+  </ul>
+
+  <div *ngFor="let film of films">
+       {{film.title}}
   </div>
+</div>
